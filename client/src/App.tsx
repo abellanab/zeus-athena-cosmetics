@@ -4,32 +4,54 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 import Home from "./pages/Home";
+import Products from "./pages/Products";
+import About from "./pages/About";
+import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
 
+function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="flex-1">{children}</main>
+      <Footer />
+    </div>
+  );
+}
 
 function Router() {
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
+      <Route path={"/"}>
+        <Layout><Home /></Layout>
+      </Route>
+      <Route path={"/products"}>
+        <Layout><Products /></Layout>
+      </Route>
+      <Route path={"/about"}>
+        <Layout><About /></Layout>
+      </Route>
+      <Route path={"/faq"}>
+        <Layout><FAQ /></Layout>
+      </Route>
+      <Route path={"/contact"}>
+        <Layout><Contact /></Layout>
+      </Route>
       <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
+      <Route>
+        <Layout><NotFound /></Layout>
+      </Route>
     </Switch>
   );
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
-
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
+      <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
           <Router />
