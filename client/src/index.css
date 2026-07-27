@@ -40,94 +40,48 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  /* Brand Typography */
-  --font-brand: 'Cinzel', serif;
+  /* Brand Typography — Cinzel for display, DM Sans for body */
   --font-display: 'Cinzel', serif;
   --font-body: 'DM Sans', sans-serif;
-  /* Brand Colors — Purple/Lavender/Marble/Cream */
-  --color-marble: oklch(0.97 0.005 75);
-  --color-marble-dark: oklch(0.92 0.01 75);
-  --color-cream: oklch(0.98 0.008 85);
-  --color-purple: oklch(0.42 0.1 300);
-  --color-purple-light: oklch(0.62 0.12 300);
-  --color-purple-dark: oklch(0.3 0.08 300);
-  --color-lavender: oklch(0.78 0.06 300);
-  --color-lavender-light: oklch(0.9 0.03 300);
-  --color-gold: oklch(0.68 0.09 70);
-  --color-gold-light: oklch(0.78 0.06 70);
+  /* Animation easings */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.97 0.005 75);
-  --foreground: oklch(0.25 0.04 300);
-  --card: oklch(0.98 0.008 85);
-  --card-foreground: oklch(0.25 0.04 300);
-  --popover: oklch(0.98 0.008 85);
-  --popover-foreground: oklch(0.25 0.04 300);
-  --primary: oklch(0.42 0.1 300);
-  --primary-foreground: oklch(0.97 0.005 75);
-  --secondary: oklch(0.78 0.06 300);
-  --secondary-foreground: oklch(0.25 0.04 300);
-  --muted: oklch(0.92 0.01 75);
-  --muted-foreground: oklch(0.5 0.02 300);
-  --accent: oklch(0.68 0.09 70);
-  --accent-foreground: oklch(0.98 0.008 85);
+  --background: oklch(0.96 0.015 140);
+  --foreground: oklch(0.2 0.01 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.01 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.01 0);
+  --primary: oklch(0.2 0.01 0);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.92 0.015 140);
+  --secondary-foreground: oklch(0.2 0.01 0);
+  --muted: oklch(0.92 0.015 140);
+  --muted-foreground: oklch(0.5 0.01 140);
+  --accent: oklch(0.25 0.02 160);
+  --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.88 0.015 300);
-  --input: oklch(0.88 0.015 300);
-  --ring: oklch(0.62 0.12 300);
-  --chart-1: oklch(0.62 0.12 300);
-  --chart-2: oklch(0.78 0.06 300);
-  --chart-3: oklch(0.42 0.1 300);
-  --chart-4: oklch(0.68 0.09 70);
-  --chart-5: oklch(0.9 0.03 300);
-  --sidebar: oklch(0.98 0.008 85);
-  --sidebar-foreground: oklch(0.25 0.04 300);
-  --sidebar-accent: oklch(0.78 0.06 300);
-  --sidebar-accent-foreground: oklch(0.25 0.04 300);
-  --sidebar-border: oklch(0.88 0.015 300);
-  --sidebar-ring: oklch(0.62 0.12 300);
-  --sidebar-primary: oklch(0.42 0.1 300);
-  --sidebar-primary-foreground: oklch(0.97 0.005 75);
-}
-
-.dark {
-  --background: oklch(0.18 0.03 300);
-  --foreground: oklch(0.95 0.01 85);
-  --card: oklch(0.22 0.04 300);
-  --card-foreground: oklch(0.95 0.01 85);
-  --popover: oklch(0.22 0.04 300);
-  --popover-foreground: oklch(0.95 0.01 85);
-  --primary: oklch(0.78 0.06 300);
-  --primary-foreground: oklch(0.18 0.03 300);
-  --secondary: oklch(0.3 0.05 300);
-  --secondary-foreground: oklch(0.95 0.01 85);
-  --muted: oklch(0.25 0.03 300);
-  --muted-foreground: oklch(0.7 0.02 85);
-  --accent: oklch(0.68 0.09 70);
-  --accent-foreground: oklch(0.98 0.008 85);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.3 0.04 300);
-  --input: oklch(0.3 0.04 300);
-  --ring: oklch(0.62 0.12 300);
-  --chart-1: oklch(0.62 0.12 300);
-  --chart-2: oklch(0.78 0.06 300);
-  --chart-3: oklch(0.42 0.1 300);
-  --chart-4: oklch(0.68 0.09 70);
-  --chart-5: oklch(0.9 0.03 300);
-  --sidebar: oklch(0.22 0.04 300);
-  --sidebar-foreground: oklch(0.95 0.01 85);
-  --sidebar-accent: oklch(0.3 0.05 300);
-  --sidebar-accent-foreground: oklch(0.95 0.01 85);
-  --sidebar-border: oklch(0.3 0.04 300);
-  --sidebar-ring: oklch(0.62 0.12 300);
-  --sidebar-primary: oklch(0.78 0.06 300);
-  --sidebar-primary-foreground: oklch(0.18 0.03 300);
+  --border: oklch(0.9 0.01 140);
+  --input: oklch(0.9 0.01 140);
+  --ring: oklch(0.25 0.02 160);
+  --chart-1: oklch(0.25 0.02 160);
+  --chart-2: oklch(0.92 0.015 140);
+  --chart-3: oklch(0.2 0.01 0);
+  --chart-4: oklch(0.25 0.02 160);
+  --chart-5: oklch(0.96 0.015 140);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.2 0.01 0);
+  --sidebar-accent: oklch(0.92 0.015 140);
+  --sidebar-accent-foreground: oklch(0.2 0.01 0);
+  --sidebar-border: oklch(0.9 0.01 140);
+  --sidebar-ring: oklch(0.25 0.02 160);
+  --sidebar-primary: oklch(0.2 0.01 0);
+  --sidebar-primary-foreground: oklch(1 0 0);
 }
 
 @layer base {
@@ -176,45 +130,34 @@
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem;
-      padding-right: 2rem;
-      max-width: 1280px;
+      padding-left: 5rem;
+      padding-right: 5rem;
+      max-width: 1440px;
     }
   }
 
-  /* Watermark text utility — lavender on marble */
+  /* Custom watermark text */
   .watermark {
-    font-family: var(--font-brand);
     position: absolute;
-    font-size: clamp(6rem, 15vw, 18rem);
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    color: oklch(0.78 0.06 300 / 0.06);
-    line-height: 1;
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 18vw, 20rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1.5px oklch(0.25 0.02 160 / 0.08);
+    line-height: 0.9;
     pointer-events: none;
     user-select: none;
     white-space: nowrap;
     overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
   }
 
-  /* Marble grain texture overlay */
-  .grain-overlay {
-    position: relative;
-  }
-  .grain-overlay::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* Organic wave divider */
-  .wave-divider {
-    display: block;
-    width: 100%;
-    height: auto;
+  /* Niche/shelf card effect */
+  .shelf-card {
+    background: linear-gradient(145deg, #f5f7f2, #e8ede0);
+    box-shadow: inset 4px 4px 12px rgba(0,0,0,0.04), inset -2px -2px 8px rgba(255,255,255,0.6);
+    border-radius: 1.25rem;
   }
 
   /* Custom button active state */

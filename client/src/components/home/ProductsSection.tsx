@@ -1,176 +1,140 @@
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { ShoppingBag, Star } from "lucide-react";
+import { ShoppingBag, ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
+import { useRef } from "react";
 
 /*
  * PRODUCTS SECTION — "Skincare That Brings Out Your Natural Radiance"
- * Design: Brand Purple/Lavender/Marble
- * - Horizontal carousel of product cards
- * - Each card: image, name, price, rating, quick-add button
+ * Matches reference video design:
+ * - Header with section title + circular arrow navigation buttons
+ * - 3-column grid layout
+ * - Cards in 3D "shelf/niche" effect with inset shadow
+ * - Product name (uppercase), price "FROM $X.XX", small cart button
  */
 
 const products = [
   {
     id: 1,
-    name: "Botanical Serum",
-    category: "Serum",
-    price: "$48.00",
-    rating: 4.8,
-    reviews: 124,
-    tag: "Best Seller",
+    name: "LUMINOUS SERUM",
+    price: "$28.00",
+    image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&h=500&fit=crop&crop=center",
   },
   {
     id: 2,
-    name: "Hydra Moisturizer",
-    category: "Moisturizer",
-    price: "$42.00",
-    rating: 4.7,
-    reviews: 98,
-    tag: null,
+    name: "HYDRA MOISTURIZER",
+    price: "$35.00",
+    image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=500&h=500&fit=crop&crop=center",
   },
   {
     id: 3,
-    name: "Gentle Cleanser",
-    category: "Cleanser",
-    price: "$32.00",
-    rating: 4.9,
-    reviews: 156,
-    tag: "New",
+    name: "GENTLE CLEANSER",
+    price: "$22.00",
+    image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&h=500&fit=crop&crop=center",
   },
   {
     id: 4,
-    name: "Rose Face Oil",
-    category: "Oil",
-    price: "$55.00",
-    rating: 4.6,
-    reviews: 73,
-    tag: null,
+    name: "ROSE FACE OIL",
+    price: "$42.00",
+    image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500&h=500&fit=crop&crop=center",
   },
   {
     id: 5,
-    name: "Vitamin C Serum",
-    category: "Serum",
-    price: "$52.00",
-    rating: 4.8,
-    reviews: 201,
-    tag: "Popular",
+    name: "VITAMIN C SERUM",
+    price: "$38.00",
+    image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=500&h=500&fit=crop&crop=center",
   },
   {
     id: 6,
-    name: "Night Repair Cream",
-    category: "Moisturizer",
-    price: "$58.00",
-    rating: 4.9,
-    reviews: 87,
-    tag: null,
+    name: "NIGHT REPAIR CREAM",
+    price: "$45.00",
+    image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=500&h=500&fit=crop&crop=center",
   },
 ];
 
-// Product image using nature-themed unsplash placeholders
-const productImages = [
-  "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop&crop=center",
-  "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=400&fit=crop&crop=center",
-  "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop&crop=center",
-  "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=400&h=400&fit=crop&crop=centerh=400https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=400&h=400&fit=crop&crop=centerfit=crophttps://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=400&h=400&fit=crop&crop=centercrop=center",
-  "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&h=400&fit=crop&crop=center",
-  "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&h=400&fit=crop&crop=center",
-];
-
 export default function ProductsSection() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const amount = 400;
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <section className="bg-lavender-light py-20 lg:py-28 relative overflow-hidden">
-      {/* Watermark */}
-      <span className="watermark top-12 left-0 hidden xl:block opacity-50">
-        RADIANCE
-      </span>
-
+    <section className="bg-[#EDF1E8] py-24 lg:py-32 relative overflow-hidden">
       <div className="container relative z-10">
-        {/* Section Header */}
-        <AnimateOnScroll className="text-center mb-12">
-          <span className="text-gold text-sm font-medium tracking-wider uppercase mb-3 block">
-            Our Collection
-          </span>
-          <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-purple mb-4">
-            Skincare That Brings Out
-            <br />
-            <span className="italic text-purple/70">Your Natural Radiance</span>
-          </h2>
-          <p className="text-purple/60 text-base max-w-lg mx-auto">
-            Discover our curated selection of botanical skincare essentials.
-          </p>
+
+        {/* Section Header with Nav Arrows */}
+        <AnimateOnScroll className="flex items-end justify-between mb-12">
+          <div>
+            <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-[#1A1A1A] leading-tight max-w-lg">
+              Skincare That Brings Out
+              <br />
+              <span className="text-[#1A1A1A]/70">Your Natural Radiance</span>
+            </h2>
+          </div>
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={() => scroll("left")}
+              className="w-11 h-11 rounded-full border border-[#1A1A1A]/20 flex items-center justify-center hover:bg-[#1A1A1A] hover:text-white hover:border-[#1A1A1A] transition-all btn-active"
+              aria-label="Scroll left"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="w-11 h-11 rounded-full border border-[#1A1A1A]/20 flex items-center justify-center hover:bg-[#1A1A1A] hover:text-white hover:border-[#1A1A1A] transition-all btn-active"
+              aria-label="Scroll right"
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </AnimateOnScroll>
 
-        {/* Product Carousel */}
-        <AnimateOnScroll delay={0.2}>
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4">
-              {products.map((product, index) => (
-                <CarouselItem key={product.id} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                  <div className="group bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
-                    {/* Product Image */}
-                    <div className="relative aspect-square bg-lavender-light/20 overflow-hidden">
-                      <img
-                        src={productImages[index]}
-                        alt={product.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                      {product.tag && (
-                        <span className="absolute top-3 left-3 px-3 py-1 bg-purple text-cream text-xs font-medium rounded-full">
-                          {product.tag}
-                        </span>
-                      )}
-                      {/* Quick Add Button */}
-                      <button className="absolute bottom-3 right-3 w-10 h-10 bg-cream rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-purple hover:text-cream btn-active">
-                        <ShoppingBag className="w-4 h-4" />
-                      </button>
-                    </div>
-
-                    {/* Product Info */}
-                    <div className="p-4 lg:p-5">
-                      <p className="text-xs text-purple/50 uppercase tracking-wider mb-1">
-                        {product.category}
-                      </p>
-                      <h3 className="font-display text-lg font-semibold text-purple mb-1">
-                        {product.name}
-                      </h3>
-                      <div className="flex items-center gap-1 mb-2">
-                        <Star className="w-3.5 h-3.5 fill-gold text-gold" />
-                        <span className="text-xs text-purple/70">
-                          {product.rating} ({product.reviews})
-                        </span>
-                      </div>
-                      <p className="font-semibold text-purple text-base">
-                        {product.price}
-                      </p>
-                    </div>
+        {/* Scrollable Product Grid */}
+        <div
+          ref={scrollRef}
+          className="flex gap-5 overflow-x-auto pb-4 scroll-smooth -mx-5 px-5 snap-x snap-mandatory"
+          style={{ scrollbarWidth: "none" }}
+        >
+          {products.map((product, i) => (
+            <AnimateOnScroll key={product.id} delay={i * 0.08}>
+              <div className="min-w-[280px] lg:min-w-[320px] flex-shrink-0 snap-start">
+                {/* Shelf/Niche Card Effect */}
+                <div className="shelf-card p-5 lg:p-6 group">
+                  {/* Product Image in Niche */}
+                  <div className="relative aspect-square rounded-xl overflow-hidden mb-5 bg-white/40 shadow-inner">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    {/* Small Cart Button */}
+                    <button className="absolute bottom-3 right-3 w-9 h-9 bg-[#1A1A1A] rounded-lg flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 btn-active">
+                      <ShoppingBag className="w-4 h-4 text-white" />
+                    </button>
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="flex items-center justify-center gap-3 mt-8">
-              <CarouselPrevious className="static translate-y-0 bg-purple text-cream border-none hover:bg-purple-light" />
-              <CarouselNext className="static translate-y-0 bg-purple text-cream border-none hover:bg-purple-light" />
-            </div>
-          </Carousel>
-        </AnimateOnScroll>
+
+                  {/* Product Info */}
+                  <h3 className="font-display text-sm font-bold tracking-wider text-[#1A1A1A] uppercase mb-1">
+                    {product.name}
+                  </h3>
+                  <p className="text-xs text-[#1A1A1A]/50">
+                    FROM {product.price}
+                  </p>
+                </div>
+              </div>
+            </AnimateOnScroll>
+          ))}
+        </div>
 
         {/* View All CTA */}
-        <AnimateOnScroll delay={0.3} className="text-center mt-10">
+        <AnimateOnScroll delay={0.3} className="text-center mt-12">
           <Link href="/products">
-            <button className="btn-active inline-flex items-center gap-2 px-7 py-3.5 bg-purple text-cream font-medium text-sm rounded-lg hover:bg-purple-light transition-all duration-300 shadow-lg shadow-purple/20">
+            <button className="btn-active inline-flex items-center gap-2 px-7 py-3.5 bg-[#1A1A1A] text-white font-medium text-sm rounded-full hover:bg-[#1A1A1A]/90 transition-all duration-300">
               View All Products
             </button>
           </Link>

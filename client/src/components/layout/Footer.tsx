@@ -3,123 +3,96 @@ import { Facebook, Instagram } from "lucide-react";
 
 /*
  * FOOTER — Zeus and Athena House of Cosmetics Corp.
- * Design: Brand Purple/Lavender/Marble
- * - Deep purple background for strong visual anchor
- * - Ritual-led brand voice, not generic e-commerce copy
+ * Matches reference video design:
+ * - Dark green #2D3A30 background
+ * - "Join The Skincare Community Now" heading
+ * - Newsletter signup
+ * - Social links (Facebook, Instagram, Tiktok)
+ * - Legal links (Terms, Privacy, Cookies)
+ * - Massive outlined "SKINCARE" text at bottom
  */
-
-const footerLinks = {
-  shop: [
-    { label: "All Products", href: "/products" },
-    { label: "Skincare Rituals", href: "/products" },
-    { label: "Serums", href: "/products" },
-    { label: "Curated Bundles", href: "/products" },
-  ],
-  company: [
-    { label: "Our Story", href: "/about" },
-    { label: "Ingredients", href: "/about" },
-    { label: "Sustainability", href: "/about" },
-    { label: "Reach Us", href: "/contact" },
-  ],
-  support: [
-    { label: "Common Questions", href: "/faq" },
-    { label: "Shipping & Returns", href: "/faq" },
-    { label: "Privacy Policy", href: "/contact" },
-    { label: "Terms of Service", href: "/contact" },
-  ],
-};
 
 export default function Footer() {
   return (
-    <footer className="bg-purple text-cream">
+    <footer className="bg-[#2D3A30] text-white overflow-hidden relative">
       {/* Newsletter Section */}
-      <div className="border-b border-purple-dark/30">
-        <div className="container py-16 lg:py-20">
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="font-display text-2xl lg:text-3xl font-semibold mb-3">
-              Begin Your Ritual
-            </h3>
-            <p className="text-cream/70 text-sm lg:text-base mb-6 font-body">
-              Join our community for skincare wisdom, exclusive offers, and early access to new collections.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 px-4 py-3 rounded-lg bg-purple-light/30 border border-purple-dark/40 text-cream placeholder:text-cream/50 text-sm focus:outline-none focus:border-gold/60 transition-colors"
-              />
-              <button className="px-6 py-3 bg-gold text-cream font-medium text-sm rounded-lg hover:bg-gold-light transition-colors btn-active whitespace-nowrap">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Footer Links */}
-      <div className="container py-12 lg:py-16">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Brand Column */}
-          <div className="col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <img
-                src="/manus-storage/zeus-athena-logo-final_b1173ed0.png"
-                alt="Zeus & Athena House of Cosmetics Corp."
-                className="h-14 w-auto"
-              />
-            </div>
-            <p className="text-cream/60 text-sm leading-relaxed mb-4">
-              Where ancient beauty meets modern skincare science. Crafted with intention, proven by nature.
-            </p>
-            <div className="flex items-center gap-3">
-              <a
-                href="#"
-                className="w-9 h-9 rounded-full bg-purple-light/30 flex items-center justify-center hover:bg-gold/30 transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-4 h-4 text-cream/80" />
-              </a>
-              <a
-                href="#"
-                className="w-9 h-9 rounded-full bg-purple-light/30 flex items-center justify-center hover:bg-gold/30 transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-4 h-4 text-cream/80" />
-              </a>
-            </div>
-          </div>
-
-          {/* Link Columns */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-cream/90 mb-4">
-                {category}
-              </h4>
-              <ul className="space-y-2.5">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-cream/60 hover:text-cream transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Copyright Bar */}
-      <div className="border-t border-purple-dark/20">
-        <div className="container py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-cream/40">
-            &copy; {new Date().getFullYear()} Zeus and Athena House of Cosmetics Corp. All rights reserved.
+      <div className="container py-20 lg:py-28">
+        <div className="max-w-xl mx-auto text-center mb-16">
+          <p className="text-xs text-white/50 uppercase tracking-widest mb-3">
+            Newsletter
           </p>
-          <p className="text-xs text-cream/40">
-            contact@zeusathena.com
+          <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-4">
+            Join The Zeus & Athena<br />Community Now
+          </h2>
+          <p className="text-white/60 text-sm lg:text-base mb-8">
+            Get exclusive access to new collections, skincare tips, and special offers.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="flex-1 px-5 py-3.5 rounded-full bg-white/10 border border-white/15 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-white/30 transition-colors"
+            />
+            <button className="px-7 py-3.5 bg-white text-[#2D3A30] font-semibold text-sm rounded-full hover:bg-white/90 transition-colors btn-active whitespace-nowrap">
+              Get in Touch
+            </button>
+          </div>
+        </div>
+
+        {/* Links Row */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 pt-8 border-t border-white/10">
+          {/* Social Links */}
+          <div className="flex items-center gap-6">
+            <Link href="/about" className="text-sm text-white/60 hover:text-white transition-colors font-medium">
+              Facebook
+            </Link>
+            <Link href="/about" className="text-sm text-white/60 hover:text-white transition-colors font-medium">
+              Instagram
+            </Link>
+            <Link href="/about" className="text-sm text-white/60 hover:text-white transition-colors font-medium">
+              Tiktok
+            </Link>
+          </div>
+
+          {/* Legal Links */}
+          <div className="flex items-center gap-6">
+            <Link href="/about" className="text-xs text-white/40 hover:text-white/70 transition-colors">
+              Terms
+            </Link>
+            <Link href="/about" className="text-xs text-white/40 hover:text-white/70 transition-colors">
+              Privacy
+            </Link>
+            <Link href="/about" className="text-xs text-white/40 hover:text-white/70 transition-colors">
+              Cookies
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Massive Outlined ZEUS & ATHENA Text */}
+      <div className="py-4 overflow-hidden">
+        <div className="text-center">
+          <span
+            className="block font-display font-black uppercase tracking-tight leading-none"
+            style={{
+              fontSize: "clamp(3rem, 10vw, 8rem)",
+              color: "transparent",
+              WebkitTextStroke: "1px rgba(255,255,255,0.12)",
+            }}
+          >
+            Zeus & Athena
+          </span>
+        </div>
+      </div>
+
+      {/* Copyright */}
+      <div className="border-t border-white/5">
+        <div className="container py-4 flex items-center justify-between">
+          <p className="text-xs text-white/30">
+            &copy; {new Date().getFullYear()} Zeus and Athena House of Cosmetics Corp.
+          </p>
+          <p className="text-xs text-white/30">
+            contact.skincare.com
           </p>
         </div>
       </div>

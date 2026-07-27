@@ -1,57 +1,32 @@
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import { Quote } from "lucide-react";
 
 /*
  * TESTIMONIAL SECTION
- * Design: Botanical Editorial
- * - Brand statement with large quotation
- * - Warm ivory background with subtle texture
+ * Matches reference video design:
+ * - Full-width image of woman partially obscured by large green leaf
+ * - White centered overlay box with text "Feel Beautiful Inside and Out with Every Product."
  */
 
 export default function TestimonialSection() {
   return (
-    <section className="relative py-20 lg:py-28 overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative py-0 overflow-hidden">
+      {/* Full-width Background Image */}
+      <div className="relative w-full" style={{ height: "70vh", minHeight: "400px" }}>
         <img
-          src="/manus-storage/testimonial-bg_9cf658b9.png"
-          alt="Natural ingredients close-up"
+          src="/manus-storage/testimonial-bg_77b486f5.png"
+          alt="Feel beautiful with natural skincare"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-purple/85" />
-      </div>
 
-      <div className="container relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
+        {/* Centered White Overlay Box */}
+        <div className="absolute inset-0 flex items-center justify-center p-6">
           <AnimateOnScroll>
-            <Quote className="w-10 h-10 text-gold/60 mx-auto mb-6" />
-            <blockquote className="font-display text-2xl sm:text-3xl lg:text-4xl font-medium text-cream leading-relaxed mb-8 italic">
-              "We believe that true beauty comes from nature itself. Every product we create is a love letter to your skin — crafted with intention, backed by science, and inspired by the wisdom of the earth."
-            </blockquote>
-            <div className="w-12 h-0.5 bg-gold/50 mx-auto mb-4" />
-            <p className="text-gold text-sm font-medium tracking-wider uppercase">
-              Zeus & Athena — Our Philosophy
-            </p>
+            <div className="bg-white rounded-2xl px-8 py-10 lg:px-14 lg:py-14 max-w-lg text-center shadow-2xl">
+              <h2 className="font-display text-xl lg:text-2xl xl:text-3xl font-bold text-[#1A1A1A] leading-snug">
+                Feel Beautiful Inside and Out with Every Product.
+              </h2>
+            </div>
           </AnimateOnScroll>
-        </div>
-
-        {/* Stats Row */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-16 max-w-3xl mx-auto">
-          {[
-            { value: "10K+", label: "Happy Customers" },
-            { value: "50+", label: "Products" },
-            { value: "100%", label: "Natural" },
-            { value: "4.8", label: "Average Rating" },
-          ].map((stat, i) => (
-            <AnimateOnScroll key={stat.label} delay={0.1 * i} className="text-center">
-              <p className="font-display text-3xl lg:text-4xl font-bold text-gold mb-1">
-                {stat.value}
-              </p>
-              <p className="text-cream/60 text-xs lg:text-sm uppercase tracking-wider">
-                {stat.label}
-              </p>
-            </AnimateOnScroll>
-          ))}
         </div>
       </div>
     </section>

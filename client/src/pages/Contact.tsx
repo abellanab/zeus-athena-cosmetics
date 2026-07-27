@@ -1,14 +1,11 @@
 import { useState } from "react";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import { Mail, Phone, MapPin, Send, Facebook, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { toast } from "sonner";
 
 /*
  * CONTACT PAGE — Zeus and Athena House of Cosmetics Corp.
- * Design: Botanical Editorial
- * - Asymmetric layout with offset columns
- * - Editorial typography and generous spacing
- * - Botanical texture in background
+ * Matches video style: same #EDF1E8 background, clean minimal form
  */
 
 export default function Contact() {
@@ -26,119 +23,109 @@ export default function Contact() {
   };
 
   return (
-    <div className="pt-24 pb-16">
-      {/* Page Header — Asymmetric */}
-      <section className="bg-lavender-light py-16 lg:py-24 relative overflow-hidden">
-        <span className="watermark top-6 right-8 hidden lg:block">CONNECT</span>
-        <div className="container relative z-10">
-          <div className="max-w-2xl lg:ml-4">
-            <AnimateOnScroll>
-              <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-purple mb-3">
-                Let's <span className="italic text-purple/70">Connect</span>
-              </h1>
-              <p className="text-purple/60 text-base lg:text-lg leading-relaxed">
-                We'd love to hear from you. Whether you need skincare guidance, have questions about our ingredients, or simply want to share your experience — our team is here with care.
-              </p>
-            </AnimateOnScroll>
-          </div>
+    <div className="pt-16 bg-[#EDF1E8] min-h-screen">
+      {/* Page Header */}
+      <section className="py-16 lg:py-20">
+        <div className="container">
+          <AnimateOnScroll>
+            <p className="text-xs text-[#1A1A1A]/40 uppercase tracking-widest mb-3">
+              Get in Touch
+            </p>
+            <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-[#1A1A1A] mb-3">
+              Let's <span className="text-[#1A1A1A]/70">Connect</span>
+            </h1>
+            <p className="text-[#1A1A1A]/60 text-base lg:text-lg max-w-xl leading-relaxed">
+              We'd love to hear from you. Whether you need skincare guidance or have questions — our team is here.
+            </p>
+          </AnimateOnScroll>
         </div>
       </section>
 
-      {/* Content — Asymmetric grid */}
-      <div className="container py-10 lg:py-16">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
-          {/* Left Column — Contact Info (narrower) */}
-          <div className="lg:col-span-4 space-y-8">
+      {/* Contact Content */}
+      <div className="container pb-20">
+        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+
+          {/* Left Column — Contact Info */}
+          <div className="lg:col-span-2 space-y-8">
             <AnimateOnScroll>
-              <h3 className="font-display text-xl font-semibold text-purple mb-6">
+              <h3 className="font-display text-xl font-semibold text-[#1A1A1A] mb-6">
                 Ways to Reach Us
               </h3>
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={0.08}>
-              <div className="flex items-start gap-4 group">
-                <div className="w-11 h-11 rounded-xl bg-lavender-light/40 flex items-center justify-center flex-shrink-0 group-hover:bg-lavender-light transition-colors duration-300">
-                  <Mail className="w-5 h-5 text-purple" />
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-xl bg-white/60 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-5 h-5 text-[#1A1A1A]" />
                 </div>
                 <div>
-                  <p className="text-xs text-purple/50 uppercase tracking-wider mb-0.5">Email</p>
-                  <p className="font-medium text-purple text-sm">contact@zeusathena.com</p>
+                  <p className="text-xs text-[#1A1A1A]/40 uppercase tracking-wider mb-0.5">Email</p>
+                  <p className="font-medium text-[#1A1A1A] text-sm">contact@zeusathena.com</p>
                 </div>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={0.14}>
-              <div className="flex items-start gap-4 group">
-                <div className="w-11 h-11 rounded-xl bg-lavender-light/40 flex items-center justify-center flex-shrink-0 group-hover:bg-lavender-light transition-colors duration-300">
-                  <Phone className="w-5 h-5 text-purple" />
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-xl bg-white/60 flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-5 h-5 text-[#1A1A1A]" />
                 </div>
                 <div>
-                  <p className="text-xs text-purple/50 uppercase tracking-wider mb-0.5">Phone</p>
-                  <p className="font-medium text-purple text-sm">+1 (555) 123-4567</p>
+                  <p className="text-xs text-[#1A1A1A]/40 uppercase tracking-wider mb-0.5">Phone</p>
+                  <p className="font-medium text-[#1A1A1A] text-sm">+1 (555) 123-4567</p>
                 </div>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={0.2}>
-              <div className="flex items-start gap-4 group">
-                <div className="w-11 h-11 rounded-xl bg-lavender-light/40 flex items-center justify-center flex-shrink-0 group-hover:bg-lavender-light transition-colors duration-300">
-                  <MapPin className="w-5 h-5 text-purple" />
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-xl bg-white/60 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5 text-[#1A1A1A]" />
                 </div>
                 <div>
-                  <p className="text-xs text-purple/50 uppercase tracking-wider mb-0.5">Visit</p>
-                  <p className="font-medium text-purple text-sm">123 Botanical Lane, Manila, PH</p>
+                  <p className="text-xs text-[#1A1A1A]/40 uppercase tracking-wider mb-0.5">Visit</p>
+                  <p className="font-medium text-[#1A1A1A] text-sm">123 Botanical Lane, Manila, PH</p>
                 </div>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={0.26}>
-              <div className="bg-lavender-light/15 rounded-2xl p-6 border border-lavender-light/20">
-                <h4 className="font-display text-base font-semibold text-purple mb-4">
+              <div className="bg-white/60 rounded-2xl p-6 border border-[#1A1A1A]/5">
+                <h4 className="font-display text-base font-semibold text-[#1A1A1A] mb-4">
                   Our Hours
                 </h4>
-                <div className="space-y-2.5 text-sm text-purple/60">
+                <div className="space-y-2.5 text-sm text-[#1A1A1A]/50">
                   <div className="flex justify-between">
                     <span>Monday - Friday</span>
-                    <span className="font-medium text-purple">9 AM - 6 PM</span>
+                    <span className="font-medium text-[#1A1A1A]">9 AM - 6 PM</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Saturday</span>
-                    <span className="font-medium text-purple">10 AM - 4 PM</span>
+                    <span className="font-medium text-[#1A1A1A]">10 AM - 4 PM</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Sunday</span>
-                    <span className="font-medium text-purple/40">Closed</span>
+                    <span className="font-medium text-[#1A1A1A]/30">Closed</span>
                   </div>
                 </div>
               </div>
             </AnimateOnScroll>
-
-            <AnimateOnScroll delay={0.32}>
-              <div className="flex items-center gap-3">
-                <a href="#" className="w-9 h-9 rounded-full bg-lavender-light/30 flex items-center justify-center hover:bg-purple hover:text-cream transition-all duration-300 text-purple/70" aria-label="Facebook">
-                  <Facebook className="w-4 h-4" />
-                </a>
-                <a href="#" className="w-9 h-9 rounded-full bg-lavender-light/30 flex items-center justify-center hover:bg-purple hover:text-cream transition-all duration-300 text-purple/70" aria-label="Instagram">
-                  <Instagram className="w-4 h-4" />
-                </a>
-              </div>
-            </AnimateOnScroll>
           </div>
 
-          {/* Right Column — Contact Form (wider) */}
-          <div className="lg:col-span-8">
+          {/* Right Column — Contact Form */}
+          <div className="lg:col-span-3">
             <AnimateOnScroll delay={0.15}>
-              <form onSubmit={handleSubmit} className="space-y-5 bg-cream rounded-2xl p-6 lg:p-8 shadow-sm border border-lavender-light/15">
-                <h3 className="font-display text-xl font-semibold text-purple mb-2">
+              <form onSubmit={handleSubmit} className="bg-white/60 rounded-2xl p-6 lg:p-8 border border-[#1A1A1A]/5">
+                <h3 className="font-display text-xl font-semibold text-[#1A1A1A] mb-2">
                   Send Us a Message
                 </h3>
-                <p className="text-purple/50 text-sm mb-4">
+                <p className="text-[#1A1A1A]/40 text-sm mb-6">
                   Fill in the details below and we'll respond within 24 hours.
                 </p>
 
-                <div className="grid sm:grid-cols-2 gap-5">
+                <div className="grid sm:grid-cols-2 gap-5 mb-5">
                   <div>
-                    <label className="block text-sm font-medium text-purple mb-1.5">
+                    <label className="block text-xs font-medium text-[#1A1A1A]/60 mb-1.5 uppercase tracking-wider">
                       Full Name
                     </label>
                     <input
@@ -147,11 +134,11 @@ export default function Contact() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Your name"
-                      className="w-full px-4 py-3 bg-lavender-light/10 rounded-xl border border-lavender-light/20 text-sm text-purple placeholder:text-purple/35 focus:outline-none focus:border-gold/50 transition-colors"
+                      className="w-full px-4 py-3 bg-[#EDF1E8] rounded-lg border border-[#1A1A1A]/10 text-sm text-[#1A1A1A] placeholder:text-[#1A1A1A]/30 focus:outline-none focus:border-[#1A1A1A]/20 transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-purple mb-1.5">
+                    <label className="block text-xs font-medium text-[#1A1A1A]/60 mb-1.5 uppercase tracking-wider">
                       Email Address
                     </label>
                     <input
@@ -160,13 +147,13 @@ export default function Contact() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="your@email.com"
-                      className="w-full px-4 py-3 bg-lavender-light/10 rounded-xl border border-lavender-light/20 text-sm text-purple placeholder:text-purple/35 focus:outline-none focus:border-gold/50 transition-colors"
+                      className="w-full px-4 py-3 bg-[#EDF1E8] rounded-lg border border-[#1A1A1A]/10 text-sm text-[#1A1A1A] placeholder:text-[#1A1A1A]/30 focus:outline-none focus:border-[#1A1A1A]/20 transition-colors"
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-purple mb-1.5">
+                <div className="mb-5">
+                  <label className="block text-xs font-medium text-[#1A1A1A]/60 mb-1.5 uppercase tracking-wider">
                     Subject
                   </label>
                   <input
@@ -175,12 +162,12 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     placeholder="What can we help with?"
-                    className="w-full px-4 py-3 bg-lavender-light/10 rounded-xl border border-lavender-light/20 text-sm text-purple placeholder:text-purple/35 focus:outline-none focus:border-gold/50 transition-colors"
+                    className="w-full px-4 py-3 bg-[#EDF1E8] rounded-lg border border-[#1A1A1A]/10 text-sm text-[#1A1A1A] placeholder:text-[#1A1A1A]/30 focus:outline-none focus:border-[#1A1A1A]/20 transition-colors"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-purple mb-1.5">
+                <div className="mb-6">
+                  <label className="block text-xs font-medium text-[#1A1A1A]/60 mb-1.5 uppercase tracking-wider">
                     Your Message
                   </label>
                   <textarea
@@ -189,13 +176,13 @@ export default function Contact() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Tell us what's on your mind..."
-                    className="w-full px-4 py-3 bg-lavender-light/10 rounded-xl border border-lavender-light/20 text-sm text-purple placeholder:text-purple/35 focus:outline-none focus:border-gold/50 transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-[#EDF1E8] rounded-lg border border-[#1A1A1A]/10 text-sm text-[#1A1A1A] placeholder:text-[#1A1A1A]/30 focus:outline-none focus:border-[#1A1A1A]/20 transition-colors resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="btn-active inline-flex items-center gap-2 px-7 py-3.5 bg-purple text-cream font-medium text-sm rounded-lg hover:bg-purple-light transition-all duration-300 shadow-lg shadow-purple/20"
+                  className="btn-active inline-flex items-center gap-2 px-7 py-3.5 bg-[#1A1A1A] text-white font-medium text-sm rounded-full hover:bg-[#1A1A1A]/90 transition-all duration-300"
                 >
                   <Send className="w-4 h-4" />
                   Send Message
