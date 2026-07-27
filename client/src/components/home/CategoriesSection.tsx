@@ -4,7 +4,7 @@ import { Link } from "wouter";
 
 /*
  * CATEGORIES SECTION — "Feel Beautiful"
- * Design: Botanical Editorial
+ * Design: Brand Purple/Lavender/Marble
  * - Category filter tabs
  * - Product grid with category-based filtering
  */
@@ -73,7 +73,7 @@ const categoryProducts = [
     category: "cleansing",
     price: "$28.00",
     isNew: false,
-    image: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=400https://images.unsplash.com/photo-1631730486784-5c3e0b3b8f38?w=400&h=400&fit=croph=400https://images.unsplash.com/photo-1631730486784-5c3e0b3b8f38?w=400&h=400&fit=cropfit=crop",
+    image: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=400&h=400&fit=crop",
   },
   {
     id: 8,
@@ -95,7 +95,7 @@ export default function CategoriesSection() {
     : categoryProducts.filter((p) => p.category === activeCategory);
 
   return (
-    <section className="bg-ivory py-20 lg:py-28 relative overflow-hidden">
+    <section className="bg-cream py-20 lg:py-28 relative overflow-hidden">
       {/* Watermark */}
       <span className="watermark bottom-10 right-0 hidden xl:block">
         BEAUTY
@@ -107,11 +107,11 @@ export default function CategoriesSection() {
           <span className="text-gold text-sm font-medium tracking-wider uppercase mb-3 block">
             Shop By Category
           </span>
-          <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-forest mb-4">
+          <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-purple mb-4">
             Feel
-            <span className="italic text-forest/70"> Beautiful</span>
+            <span className="italic text-purple/70"> Beautiful</span>
           </h2>
-          <p className="text-forest/60 text-base max-w-lg mx-auto">
+          <p className="text-purple/60 text-base max-w-lg mx-auto">
             Explore our curated categories to find your perfect skincare ritual.
           </p>
         </AnimateOnScroll>
@@ -125,8 +125,8 @@ export default function CategoriesSection() {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`btn-active px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeCategory === cat.id
-                    ? "bg-forest text-ivory shadow-md"
-                    : "bg-sage/30 text-forest/70 hover:bg-sage/50"
+                    ? "bg-purple text-cream shadow-md"
+                    : "bg-lavender-light/30 text-purple/70 hover:bg-lavender-light/50"
                 }`}
               >
                 {cat.label}
@@ -141,25 +141,25 @@ export default function CategoriesSection() {
             <AnimateOnScroll key={product.id} delay={i * 0.06}>
               <Link href="/products">
                 <div className="group cursor-pointer">
-                  <div className="relative aspect-square rounded-2xl overflow-hidden bg-sage/10 mb-3">
+                  <div className="relative aspect-square rounded-2xl overflow-hidden bg-lavender-light/10 mb-3">
                     <img
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     {product.isNew && (
-                      <span className="absolute top-3 left-3 px-3 py-1 bg-gold text-ivory text-xs font-medium rounded-full">
+                      <span className="absolute top-3 left-3 px-3 py-1 bg-gold text-cream text-xs font-medium rounded-full">
                         New
                       </span>
                     )}
                   </div>
-                  <p className="text-xs text-forest/50 uppercase tracking-wider mb-0.5">
+                  <p className="text-xs text-purple/50 uppercase tracking-wider mb-0.5">
                     {product.category}
                   </p>
-                  <h3 className="font-display text-base font-semibold text-forest group-hover:text-gold transition-colors">
+                  <h3 className="font-display text-base font-semibold text-purple group-hover:text-gold transition-colors">
                     {product.name}
                   </h3>
-                  <p className="text-sm font-medium text-forest/70 mt-0.5">
+                  <p className="text-sm font-medium text-purple/70 mt-0.5">
                     {product.price}
                   </p>
                 </div>

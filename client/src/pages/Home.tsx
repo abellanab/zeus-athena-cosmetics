@@ -7,7 +7,7 @@ import FAQSection from "@/components/home/FAQSection";
 
 /*
  * HOME PAGE — Zeus and Athena House of Cosmetics Corp.
- * Design: Botanical Editorial
+ * Design: Brand Purple/Lavender/Marble
  * All sections are split into separate TSX files for clean architecture.
  * Wave dividers between sections for organic transitions.
  */
@@ -31,37 +31,37 @@ export default function Home() {
     <div className="overflow-x-hidden">
       <HeroSection />
 
-      {/* Wave: Sage → Ivory */}
+      {/* Wave: Lavender-Light → Cream */}
       <div className="relative z-10 -mt-px">
-        <WaveDivider color="oklch(0.98 0.005 85)" />
+        <WaveDivider color="oklch(0.98 0.008 85)" />
       </div>
 
       <FeaturesSection />
 
-      {/* Wave: Ivory → Sage Light */}
+      {/* Wave: Cream → Lavender-Light */}
       <div className="relative z-10 -mt-px">
-        <WaveDivider color="oklch(0.92 0.025 145)" />
+        <WaveDivider color="oklch(0.9 0.03 300)" />
       </div>
 
       <ProductsSection />
 
-      {/* Wave: Sage Light → Ivory */}
+      {/* Wave: Lavender-Light → Cream */}
       <div className="relative z-10 -mt-px">
-        <WaveDivider color="oklch(0.98 0.005 85)" />
+        <WaveDivider color="oklch(0.98 0.008 85)" />
       </div>
 
       <CategoriesSection />
 
-      {/* Wave: Ivory → Forest (Testimonial bg) */}
+      {/* Wave: Cream → Purple (Testimonial bg) */}
       <div className="relative z-10 -mt-px">
-        <WaveDivider color="oklch(0.18 0.04 145)" />
+        <WaveDivider color="oklch(0.42 0.1 300)" />
       </div>
 
       <TestimonialSection />
 
-      {/* Wave: Forest → Sage Light */}
+      {/* Wave: Purple → Lavender-Light (FAQ bg) */}
       <div className="relative z-10 -mt-px rotate-180">
-        <WaveDivider color="oklch(0.92 0.025 145)" />
+        <WaveDivider color="oklch(0.9 0.03 300)" />
       </div>
 
       <FAQSection />

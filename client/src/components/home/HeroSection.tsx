@@ -5,7 +5,7 @@ import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 /*
  * HERO SECTION — Zeus and Athena House of Cosmetics Corp.
- * Design: Botanical Editorial
+ * Design: Brand Purple/Lavender/Marble
  * - Full viewport hero with nature/beauty imagery
  * - Brand mission statement, star rating, CTA
  * - Large watermark typography in background
@@ -14,7 +14,7 @@ import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center bg-sage overflow-hidden">
+    <section className="relative min-h-screen flex items-center bg-lavender-light overflow-hidden">
       {/* Watermark Background Text */}
       <span className="watermark top-1/4 -left-8 hidden md:block">
         COSMETICS
@@ -30,7 +30,7 @@ export default function HeroSection() {
           alt="Natural beauty with botanical elements"
           className="w-full h-full object-cover opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-sage/90 via-sage/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-lavender-light/90 via-lavender-light/70 to-transparent" />
       </div>
 
       {/* Content */}
@@ -42,7 +42,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-forest/10 text-forest text-xs font-medium tracking-wider uppercase mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple/10 text-purple text-xs font-medium tracking-wider uppercase mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-gold" />
               Premium Skincare Collection
             </span>
@@ -53,11 +53,11 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
-            className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-forest leading-[1.1] mb-6"
+            className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-purple leading-[1.1] mb-6"
           >
             Glow
             <br />
-            <span className="italic font-normal text-forest/80">Naturally</span>
+            <span className="italic font-normal text-purple/80">Naturally</span>
           </motion.h1>
 
           {/* Description */}
@@ -65,7 +65,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
-            className="text-forest/70 text-base lg:text-lg max-w-lg mb-4 leading-relaxed"
+            className="text-purple/70 text-base lg:text-lg max-w-lg mb-4 leading-relaxed"
           >
             Your skin deserves the ritual it deserves. Discover botanical skincare crafted with intention and proven by nature.
           </motion.p>
@@ -87,8 +87,8 @@ export default function HeroSection() {
                 />
               ))}
             </div>
-            <span className="text-forest/70 text-sm">
-              <span className="font-semibold text-forest">4.8</span> / 5 — Loved by thousands
+            <span className="text-purple/70 text-sm">
+              <span className="font-semibold text-purple">4.8</span> / 5 — Loved by thousands
             </span>
           </motion.div>
 
@@ -100,13 +100,13 @@ export default function HeroSection() {
             className="flex flex-wrap items-center gap-4"
           >
             <Link href="/products">
-              <button className="btn-active inline-flex items-center gap-2 px-7 py-3.5 bg-forest text-ivory font-medium text-sm rounded-lg hover:bg-forest-light transition-all duration-300 shadow-lg shadow-forest/20">
+              <button className="btn-active inline-flex items-center gap-2 px-7 py-3.5 bg-purple text-cream font-medium text-sm rounded-lg hover:bg-purple-light transition-all duration-300 shadow-lg shadow-purple/20">
                 Shop Collection
                 <ArrowRight className="w-4 h-4" />
               </button>
             </Link>
             <Link href="/about">
-              <button className="btn-active inline-flex items-center gap-2 px-7 py-3.5 bg-transparent text-forest font-medium text-sm rounded-lg border border-forest/20 hover:border-forest/40 hover:bg-forest/5 transition-all duration-300">
+              <button className="btn-active inline-flex items-center gap-2 px-7 py-3.5 bg-transparent text-purple font-medium text-sm rounded-lg border border-purple-light/30 hover:border-purple-light/50 hover:bg-purple/5 transition-all duration-300">
                 Our Story
               </button>
             </Link>
@@ -124,11 +124,11 @@ export default function HeroSection() {
             <img
               src="/manus-storage/product-hero_297ac857.png"
               alt="Premium cosmetics collection"
-              className="w-64 xl:w-80 rounded-2xl shadow-2xl shadow-forest/20"
+              className="w-64 xl:w-80 rounded-2xl shadow-2xl shadow-purple/20"
             />
-            <div className="absolute -bottom-4 -left-4 bg-ivory rounded-xl px-4 py-3 shadow-lg">
-              <p className="text-xs text-forest/60 mb-0.5">Best Seller</p>
-              <p className="text-sm font-semibold text-forest">Botanical Serum</p>
+            <div className="absolute -bottom-4 -left-4 bg-cream rounded-xl px-4 py-3 shadow-lg">
+              <p className="text-xs text-purple/60 mb-0.5">Best Seller</p>
+              <p className="text-sm font-semibold text-purple">Botanical Serum</p>
             </div>
           </div>
         </motion.div>
@@ -144,9 +144,9 @@ export default function HeroSection() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="w-6 h-10 rounded-full border-2 border-forest/30 flex items-start justify-center p-1.5"
+          className="w-6 h-10 rounded-full border-2 border-purple-light/30 flex items-start justify-center p-1.5"
         >
-          <div className="w-1.5 h-1.5 rounded-full bg-forest/50" />
+          <div className="w-1.5 h-1.5 rounded-full bg-purple/50" />
         </motion.div>
       </motion.div>
     </section>

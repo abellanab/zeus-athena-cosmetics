@@ -11,7 +11,7 @@ import { Link } from "wouter";
 
 /*
  * PRODUCTS SECTION — "Skincare That Brings Out Your Natural Radiance"
- * Design: Botanical Editorial
+ * Design: Brand Purple/Lavender/Marble
  * - Horizontal carousel of product cards
  * - Each card: image, name, price, rating, quick-add button
  */
@@ -85,7 +85,7 @@ const productImages = [
 
 export default function ProductsSection() {
   return (
-    <section className="bg-sage-light py-20 lg:py-28 relative overflow-hidden">
+    <section className="bg-lavender-light py-20 lg:py-28 relative overflow-hidden">
       {/* Watermark */}
       <span className="watermark top-12 left-0 hidden xl:block opacity-50">
         RADIANCE
@@ -97,12 +97,12 @@ export default function ProductsSection() {
           <span className="text-gold text-sm font-medium tracking-wider uppercase mb-3 block">
             Our Collection
           </span>
-          <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-forest mb-4">
+          <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-purple mb-4">
             Skincare That Brings Out
             <br />
-            <span className="italic text-forest/70">Your Natural Radiance</span>
+            <span className="italic text-purple/70">Your Natural Radiance</span>
           </h2>
-          <p className="text-forest/60 text-base max-w-lg mx-auto">
+          <p className="text-purple/60 text-base max-w-lg mx-auto">
             Discover our curated selection of botanical skincare essentials.
           </p>
         </AnimateOnScroll>
@@ -119,40 +119,40 @@ export default function ProductsSection() {
             <CarouselContent className="-ml-4">
               {products.map((product, index) => (
                 <CarouselItem key={product.id} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                  <div className="group bg-ivory rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+                  <div className="group bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
                     {/* Product Image */}
-                    <div className="relative aspect-square bg-sage/20 overflow-hidden">
+                    <div className="relative aspect-square bg-lavender-light/20 overflow-hidden">
                       <img
                         src={productImages[index]}
                         alt={product.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                       {product.tag && (
-                        <span className="absolute top-3 left-3 px-3 py-1 bg-forest text-ivory text-xs font-medium rounded-full">
+                        <span className="absolute top-3 left-3 px-3 py-1 bg-purple text-cream text-xs font-medium rounded-full">
                           {product.tag}
                         </span>
                       )}
                       {/* Quick Add Button */}
-                      <button className="absolute bottom-3 right-3 w-10 h-10 bg-ivory rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-forest hover:text-ivory btn-active">
+                      <button className="absolute bottom-3 right-3 w-10 h-10 bg-cream rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-purple hover:text-cream btn-active">
                         <ShoppingBag className="w-4 h-4" />
                       </button>
                     </div>
 
                     {/* Product Info */}
                     <div className="p-4 lg:p-5">
-                      <p className="text-xs text-forest/50 uppercase tracking-wider mb-1">
+                      <p className="text-xs text-purple/50 uppercase tracking-wider mb-1">
                         {product.category}
                       </p>
-                      <h3 className="font-display text-lg font-semibold text-forest mb-1">
+                      <h3 className="font-display text-lg font-semibold text-purple mb-1">
                         {product.name}
                       </h3>
                       <div className="flex items-center gap-1 mb-2">
                         <Star className="w-3.5 h-3.5 fill-gold text-gold" />
-                        <span className="text-xs text-forest/70">
+                        <span className="text-xs text-purple/70">
                           {product.rating} ({product.reviews})
                         </span>
                       </div>
-                      <p className="font-semibold text-forest text-base">
+                      <p className="font-semibold text-purple text-base">
                         {product.price}
                       </p>
                     </div>
@@ -161,8 +161,8 @@ export default function ProductsSection() {
               ))}
             </CarouselContent>
             <div className="flex items-center justify-center gap-3 mt-8">
-              <CarouselPrevious className="static translate-y-0 bg-forest text-ivory border-none hover:bg-forest-light" />
-              <CarouselNext className="static translate-y-0 bg-forest text-ivory border-none hover:bg-forest-light" />
+              <CarouselPrevious className="static translate-y-0 bg-purple text-cream border-none hover:bg-purple-light" />
+              <CarouselNext className="static translate-y-0 bg-purple text-cream border-none hover:bg-purple-light" />
             </div>
           </Carousel>
         </AnimateOnScroll>
@@ -170,7 +170,7 @@ export default function ProductsSection() {
         {/* View All CTA */}
         <AnimateOnScroll delay={0.3} className="text-center mt-10">
           <Link href="/products">
-            <button className="btn-active inline-flex items-center gap-2 px-7 py-3.5 bg-forest text-ivory font-medium text-sm rounded-lg hover:bg-forest-light transition-all duration-300 shadow-lg shadow-forest/20">
+            <button className="btn-active inline-flex items-center gap-2 px-7 py-3.5 bg-purple text-cream font-medium text-sm rounded-lg hover:bg-purple-light transition-all duration-300 shadow-lg shadow-purple/20">
               View All Products
             </button>
           </Link>

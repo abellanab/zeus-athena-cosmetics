@@ -8,7 +8,7 @@ import {
 
 /*
  * FAQ SECTION — "Answers to Your Skincare Questions"
- * Design: Botanical Editorial
+ * Design: Brand Purple/Lavender/Marble
  * - Accordion-style FAQ with smooth expand/collapse
  */
 
@@ -37,7 +37,7 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <section className="bg-sage-light py-20 lg:py-28 relative overflow-hidden">
+    <section className="bg-lavender-light py-20 lg:py-28 relative overflow-hidden">
       <div className="container">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
           {/* Left Column - Header */}
@@ -46,12 +46,12 @@ export default function FAQSection() {
               <span className="text-gold text-sm font-medium tracking-wider uppercase mb-3 block">
                 FAQ
               </span>
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-forest mb-4 leading-tight">
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-purple mb-4 leading-tight">
                 Answers to Your
                 <br />
-                <span className="italic text-forest/70">Skincare Questions</span>
+                <span className="italic text-purple/70">Skincare Questions</span>
               </h2>
-              <p className="text-forest/60 text-base leading-relaxed mb-6">
+              <p className="text-purple/60 text-base leading-relaxed mb-6">
                 Can't find what you're looking for? Feel free to reach out to our team for personalized assistance.
               </p>
             </AnimateOnScroll>
@@ -65,12 +65,12 @@ export default function FAQSection() {
                   <AccordionItem
                     key={faq.question}
                     value={faq.question}
-                    className="bg-ivory rounded-xl px-5 border border-sage/30"
+                    className="bg-cream rounded-xl px-5 border border-lavender-light/30"
                   >
-                    <AccordionTrigger className="text-left font-display text-base font-semibold text-forest hover:text-gold py-4 no-underline">
+                    <AccordionTrigger className="text-left font-display text-base font-semibold text-purple hover:text-gold py-4 no-underline">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-forest/60 text-sm leading-relaxed pb-4">
+                    <AccordionContent className="text-purple/60 text-sm leading-relaxed pb-4">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>

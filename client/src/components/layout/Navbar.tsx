@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
+// Brand: Official Zeus & Athena logo with marble background
+// Font: Cinzel/serif with wide letter-spacing as seen in brand mark
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ShoppingBag, User, Search } from "lucide-react";
 
 /*
  * NAVBAR — Zeus and Athena House of Cosmetics Corp.
- * Design: Botanical Editorial
- * - Sticky header, transparent over hero, solid sage on scroll
+ * Design: Brand Purple/Lavender/Marble
+ * - Sticky header, transparent over hero, solid lavender-light on scroll
  * - Mobile hamburger menu with slide-down animation
  * - Clean, minimal navigation links
  */
@@ -54,21 +56,18 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-sage/95 backdrop-blur-md shadow-sm"
+            ? "bg-lavender-light/95 backdrop-blur-md shadow-sm"
             : "bg-transparent"
         }`}
       >
         <nav className="container flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href="/" className="flex items-center group">
             <img
-              src="/manus-storage/logo_4b385619.png"
-              alt="Zeus & Athena Logo"
-              className="w-8 h-8 lg:w-10 lg:h-10 transition-transform duration-300 group-hover:scale-110"
+              src="/manus-storage/zeus-athena-logo-final_b1173ed0.png"
+              alt="Zeus & Athena House of Cosmetics Corp."
+              className="h-16 lg:h-20 w-auto transition-transform duration-300 group-hover:scale-105"
             />
-            <span className="font-display text-lg lg:text-xl font-semibold tracking-wide text-forest">
-              Zeus & Athena
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -79,8 +78,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-gold ${
                   location === link.href
-                    ? "text-forest border-b-2 border-gold pb-0.5"
-                    : "text-forest/80"
+                    ? "text-purple border-b-2 border-gold pb-0.5"
+                    : "text-purple/80"
                 }`}
               >
                 {link.label}
@@ -90,15 +89,15 @@ export default function Navbar() {
 
           {/* Desktop Utility Icons */}
           <div className="hidden lg:flex items-center gap-4">
-            <button className="p-2 rounded-full hover:bg-forest/5 transition-colors btn-active" aria-label="Search">
-              <Search className="w-5 h-5 text-forest" />
+            <button className="p-2 rounded-full hover:bg-purple/5 transition-colors btn-active" aria-label="Search">
+              <Search className="w-5 h-5 text-purple" />
             </button>
-            <button className="p-2 rounded-full hover:bg-forest/5 transition-colors btn-active" aria-label="Account">
-              <User className="w-5 h-5 text-forest" />
+            <button className="p-2 rounded-full hover:bg-purple/5 transition-colors btn-active" aria-label="Account">
+              <User className="w-5 h-5 text-purple" />
             </button>
-            <button className="p-2 rounded-full hover:bg-forest/5 transition-colors btn-active relative" aria-label="Cart">
-              <ShoppingBag className="w-5 h-5 text-forest" />
-              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-gold rounded-full text-[10px] font-bold text-ivory flex items-center justify-center">
+            <button className="p-2 rounded-full hover:bg-purple/5 transition-colors btn-active relative" aria-label="Cart">
+              <ShoppingBag className="w-5 h-5 text-purple" />
+              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-gold rounded-full text-[10px] font-bold text-cream flex items-center justify-center">
                 0
               </span>
             </button>
@@ -106,14 +105,14 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="lg:hidden p-2 rounded-full hover:bg-forest/5 transition-colors btn-active"
+            className="lg:hidden p-2 rounded-full hover:bg-purple/5 transition-colors btn-active"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
             aria-label="Toggle menu"
           >
             {isMobileOpen ? (
-              <X className="w-6 h-6 text-forest" />
+              <X className="w-6 h-6 text-purple" />
             ) : (
-              <Menu className="w-6 h-6 text-forest" />
+              <Menu className="w-6 h-6 text-purple" />
             )}
           </button>
         </nav>
@@ -127,7 +126,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-forest/30 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-40 bg-purple/30 backdrop-blur-sm lg:hidden"
             onClick={() => setIsMobileOpen(false)}
           />
         )}
@@ -141,7 +140,7 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-            className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] z-50 bg-ivory shadow-2xl lg:hidden"
+            className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] z-50 bg-cream shadow-2xl lg:hidden"
           >
             <div className="flex flex-col h-full pt-20 pb-8 px-6">
               <div className="flex flex-col gap-1 mb-8">
@@ -156,8 +155,8 @@ export default function Navbar() {
                       href={link.href}
                       className={`block py-3 px-4 text-lg font-medium transition-colors rounded-lg ${
                         location === link.href
-                          ? "text-forest bg-sage/50"
-                          : "text-forest/70 hover:text-forest hover:bg-sage/30"
+                          ? "text-purple bg-lavender-light/50"
+                          : "text-purple/70 hover:text-purple hover:bg-lavender-light/30"
                       }`}
                     >
                       {link.label}
@@ -167,15 +166,15 @@ export default function Navbar() {
               </div>
 
               <div className="mt-auto flex items-center gap-4 px-4">
-                <button className="p-3 rounded-full bg-sage/30 hover:bg-sage/50 transition-colors btn-active" aria-label="Search">
-                  <Search className="w-5 h-5 text-forest" />
+                <button className="p-3 rounded-full bg-lavender-light/30 hover:bg-lavender-light/50 transition-colors btn-active" aria-label="Search">
+                  <Search className="w-5 h-5 text-purple" />
                 </button>
-                <button className="p-3 rounded-full bg-sage/30 hover:bg-sage/50 transition-colors btn-active" aria-label="Account">
-                  <User className="w-5 h-5 text-forest" />
+                <button className="p-3 rounded-full bg-lavender-light/30 hover:bg-lavender-light/50 transition-colors btn-active" aria-label="Account">
+                  <User className="w-5 h-5 text-purple" />
                 </button>
-                <button className="p-3 rounded-full bg-sage/30 hover:bg-sage/50 transition-colors btn-active relative" aria-label="Cart">
-                  <ShoppingBag className="w-5 h-5 text-forest" />
-                  <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-gold rounded-full text-[10px] font-bold text-ivory flex items-center justify-center">
+                <button className="p-3 rounded-full bg-lavender-light/30 hover:bg-lavender-light/50 transition-colors btn-active relative" aria-label="Cart">
+                  <ShoppingBag className="w-5 h-5 text-purple" />
+                  <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-gold rounded-full text-[10px] font-bold text-cream flex items-center justify-center">
                     0
                   </span>
                 </button>

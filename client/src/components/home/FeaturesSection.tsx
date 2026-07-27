@@ -3,7 +3,7 @@ import { Leaf, Sun, Heart } from "lucide-react";
 
 /*
  * FEATURES SECTION — "Your Skin Deserves The Best Care"
- * Design: Botanical Editorial
+ * Design: Brand Purple/Lavender/Marble
  * - Numbered list (01, 02, 03) with icons and descriptions
  * - Side image for visual balance
  */
@@ -31,7 +31,7 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="bg-ivory relative py-20 lg:py-28 overflow-hidden">
+    <section className="bg-cream relative py-20 lg:py-28 overflow-hidden">
       {/* Watermark */}
       <span className="watermark top-10 right-0 hidden lg:block">
         CARE
@@ -47,7 +47,7 @@ export default function FeaturesSection() {
                 alt="Natural skincare ingredients"
                 className="w-full rounded-2xl shadow-xl"
               />
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-sage rounded-2xl -z-10" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-lavender-light rounded-2xl -z-10" />
             </div>
           </AnimateOnScroll>
 
@@ -57,12 +57,12 @@ export default function FeaturesSection() {
               <span className="text-gold text-sm font-medium tracking-wider uppercase mb-3 block">
                 Why Choose Us
               </span>
-              <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-forest mb-4 leading-tight">
+              <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-purple mb-4 leading-tight">
                 Your Skin Deserves
                 <br />
-                <span className="italic text-forest/70">The Best Care</span>
+                <span className="italic text-purple/70">The Best Care</span>
               </h2>
-              <p className="text-forest/60 text-base lg:text-lg mb-10 max-w-md">
+              <p className="text-purple/60 text-base lg:text-lg mb-10 max-w-md">
                 We believe beauty should be simple, natural, and effective. Every formula is a testament to our commitment.
               </p>
             </AnimateOnScroll>
@@ -71,17 +71,17 @@ export default function FeaturesSection() {
               {features.map((feature, i) => (
                 <AnimateOnScroll key={feature.number} delay={0.15 + i * 0.1} direction="right">
                   <div className="flex items-start gap-4 group">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-sage/50 flex items-center justify-center group-hover:bg-sage transition-colors duration-300">
-                      <feature.icon className="w-5 h-5 text-forest" />
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-lavender-light/50 flex items-center justify-center group-hover:bg-lavender-light transition-colors duration-300">
+                      <feature.icon className="w-5 h-5 text-purple" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-xs font-medium text-gold tracking-wider">{feature.number}</span>
-                        <h3 className="font-display text-lg font-semibold text-forest">
+                        <h3 className="font-display text-lg font-semibold text-purple">
                           {feature.title}
                         </h3>
                       </div>
-                      <p className="text-forest/60 text-sm leading-relaxed">
+                      <p className="text-purple/60 text-sm leading-relaxed">
                         {feature.description}
                       </p>
                     </div>

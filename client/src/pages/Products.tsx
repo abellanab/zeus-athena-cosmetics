@@ -69,14 +69,14 @@ export default function Products() {
   return (
     <div className="pt-24 pb-16">
       {/* Page Header */}
-      <section className="bg-sage py-16 lg:py-24 relative overflow-hidden">
+      <section className="bg-lavender-light py-16 lg:py-24 relative overflow-hidden">
         <span className="watermark top-10 right-0 hidden lg:block">SHOP</span>
         <div className="container relative z-10">
           <AnimateOnScroll>
-            <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-forest mb-3">
-              Our <span className="italic text-forest/70">Collection</span>
+            <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-purple mb-3">
+              Our <span className="italic text-purple/70">Collection</span>
             </h1>
-            <p className="text-forest/60 text-base lg:text-lg max-w-lg">
+            <p className="text-purple/60 text-base lg:text-lg max-w-lg">
               Explore our full range of botanical skincare essentials, crafted with intention and proven by nature.
             </p>
           </AnimateOnScroll>
@@ -88,13 +88,13 @@ export default function Products() {
         <div className="flex flex-col lg:flex-row lg:items-center gap-6 mb-12">
           {/* Search */}
           <AnimateOnScroll className="relative flex-1 max-w-sm">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-forest/40" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-purple/40" />
             <input
               type="text"
               placeholder="Search our collection..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 bg-ivory rounded-xl border border-sage/30 text-sm text-forest placeholder:text-forest/40 focus:outline-none focus:border-gold/50 transition-colors"
+              className="w-full pl-11 pr-4 py-3 bg-cream rounded-xl border border-lavender-light/30 text-sm text-purple placeholder:text-purple/40 focus:outline-none focus:border-gold/50 transition-colors"
             />
           </AnimateOnScroll>
 
@@ -106,8 +106,8 @@ export default function Products() {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`btn-active px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeCategory === cat.id
-                    ? "bg-forest text-ivory shadow-md"
-                    : "bg-sage/30 text-forest/70 hover:bg-sage/50"
+                    ? "bg-purple text-cream shadow-md"
+                    : "bg-lavender-light/30 text-purple/70 hover:bg-lavender-light/50"
                 }`}
               >
                 {cat.label}
@@ -117,7 +117,7 @@ export default function Products() {
         </div>
 
         {/* Results Count */}
-        <p className="text-sm text-forest/50 mb-8">
+        <p className="text-sm text-purple/50 mb-8">
           {filtered.length} product{filtered.length !== 1 ? "s" : ""} curated for you
         </p>
 
@@ -130,12 +130,12 @@ export default function Products() {
             return (
               <AnimateOnScroll key={product.id} delay={(i % 3) * 0.06}>
                 <div
-                  className={`group bg-ivory rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 ${
+                  className={`group bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 ${
                     isLarge ? "md:col-span-2" : isMedium ? "md:col-span-1" : "md:col-span-1"
                   }`}
                 >
                   {/* Image */}
-                  <div className="relative overflow-hidden bg-sage/10" style={{ aspectRatio: isLarge ? "2/1" : "4/5" }}>
+                  <div className="relative overflow-hidden bg-lavender-light/10" style={{ aspectRatio: isLarge ? "2/1" : "4/5" }}>
                     <img
                       src={product.image}
                       alt={product.name}
@@ -143,31 +143,31 @@ export default function Products() {
                     />
                     {product.tag && (
                       <span className={`absolute top-3 left-3 px-3 py-1 text-xs font-medium rounded-full ${
-                        product.tag.includes("Save") ? "bg-gold text-ivory" : "bg-forest text-ivory"
+                        product.tag.includes("Save") ? "bg-gold text-cream" : "bg-purple text-cream"
                       }`}>
                         {product.tag}
                       </span>
                     )}
-                    <button className="absolute bottom-3 right-3 w-10 h-10 bg-ivory rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-forest hover:text-ivory btn-active">
+                    <button className="absolute bottom-3 right-3 w-10 h-10 bg-cream rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-purple hover:text-cream btn-active">
                       <ShoppingBag className="w-4 h-4" />
                     </button>
                   </div>
 
                   {/* Info */}
                   <div className="p-4 lg:p-5">
-                    <p className="text-xs text-forest/50 uppercase tracking-wider mb-1">
+                    <p className="text-xs text-purple/50 uppercase tracking-wider mb-1">
                       {product.category}
                     </p>
-                    <h3 className="font-display text-base lg:text-lg font-semibold text-forest mb-1 group-hover:text-gold transition-colors">
+                    <h3 className="font-display text-base lg:text-lg font-semibold text-purple mb-1 group-hover:text-gold transition-colors">
                       {product.name}
                     </h3>
                     <div className="flex items-center gap-1 mb-2">
                       <Star className="w-3.5 h-3.5 fill-gold text-gold" />
-                      <span className="text-xs text-forest/70">
+                      <span className="text-xs text-purple/70">
                         {product.rating} ({product.reviews})
                       </span>
                     </div>
-                    <p className="font-semibold text-forest text-base">
+                    <p className="font-semibold text-purple text-base">
                       {product.price}
                     </p>
                   </div>
@@ -180,8 +180,8 @@ export default function Products() {
         {/* Empty State */}
         {filtered.length === 0 && (
           <div className="text-center py-20">
-            <p className="font-display text-2xl text-forest/40 mb-2">No products found</p>
-            <p className="text-forest/40 text-sm">Try adjusting your search or filter criteria.</p>
+            <p className="font-display text-2xl text-purple/40 mb-2">No products found</p>
+            <p className="text-purple/40 text-sm">Try adjusting your search or filter criteria.</p>
           </div>
         )}
       </div>

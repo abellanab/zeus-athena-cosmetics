@@ -18,14 +18,14 @@ export default function TestimonialSection() {
           alt="Natural ingredients close-up"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-forest/85" />
+        <div className="absolute inset-0 bg-purple/85" />
       </div>
 
       <div className="container relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <AnimateOnScroll>
             <Quote className="w-10 h-10 text-gold/60 mx-auto mb-6" />
-            <blockquote className="font-display text-2xl sm:text-3xl lg:text-4xl font-medium text-ivory leading-relaxed mb-8 italic">
+            <blockquote className="font-display text-2xl sm:text-3xl lg:text-4xl font-medium text-cream leading-relaxed mb-8 italic">
               "We believe that true beauty comes from nature itself. Every product we create is a love letter to your skin — crafted with intention, backed by science, and inspired by the wisdom of the earth."
             </blockquote>
             <div className="w-12 h-0.5 bg-gold/50 mx-auto mb-4" />
@@ -47,7 +47,7 @@ export default function TestimonialSection() {
               <p className="font-display text-3xl lg:text-4xl font-bold text-gold mb-1">
                 {stat.value}
               </p>
-              <p className="text-ivory/60 text-xs lg:text-sm uppercase tracking-wider">
+              <p className="text-cream/60 text-xs lg:text-sm uppercase tracking-wider">
                 {stat.label}
               </p>
             </AnimateOnScroll>
