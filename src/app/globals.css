@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  /* Brand Typography — Cinzel for display, DM Sans for body */
+  --font-display: 'Cinzel', serif;
+  --font-body: 'DM Sans', sans-serif;
+  /* Animation easings */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+:root {
+  --radius: 0.5rem;
+  /* Zeus & Athena brand palette — derived from logo */
+  --background: #ffffff;
+  --foreground: #4A2D6B;
+  --card: #ffffff;
+  --card-foreground: #4A2D6B;
+  --popover: #ffffff;
+  --popover-foreground: #4A2D6B;
+  --primary: #4A2D6B;
+  --primary-foreground: #ffffff;
+  --secondary: #EFE9F5;
+  --secondary-foreground: #4A2D6B;
+  --muted: #EFE9F5;
+  --muted-foreground: #9B85C4;
+  --accent: #9B85C4;
+  --accent-foreground: #ffffff;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: #B8A8D4;
+  --input: #EFE9F5;
+  --ring: #9B85C4;
+  --chart-1: #4A2D6B;
+  --chart-2: #9B85C4;
+  --chart-3: #B8A8D4;
+  --chart-4: #5B3A7A;
+  --chart-5: #A890C0;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #4A2D6B;
+  --sidebar-accent: #EFE9F5;
+  --sidebar-accent-foreground: #4A2D6B;
+  --sidebar-border: #B8A8D4;
+  --sidebar-ring: #9B85C4;
+  --sidebar-primary: #4A2D6B;
+  --sidebar-primary-foreground: #ffffff;
+  /* Brand color tokens for direct use */
+  --brand-deep-purple: #4A2D6B;
+  --brand-purple-alt: #5B3A7A;
+  --brand-lavender: #9B85C4;
+  --brand-lavender-alt: #A890C0;
+  --brand-lilac: #B8A8D4;
+  --brand-cream: #ffffff;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 5rem;
+      padding-right: 5rem;
+      max-width: 1440px;
+    }
+  }
+
+  /* Custom watermark text */
+  .watermark {
+    position: absolute;
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 18vw, 20rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #9B85C4;
+    -webkit-text-stroke-opacity: 0.18;
+    line-height: 0.9;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  /* Brand display heading — Cinzel, wide letter-spacing, all caps */
+  .brand-display {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-weight: 700;
+  }
+
+  /* Niche/shelf card effect — soft lavender gradient */
+  .shelf-card {
+    background: linear-gradient(145deg, #ffffff, #EFE9F5);
+    box-shadow: inset 4px 4px 12px rgba(74, 45, 107, 0.04), inset -2px -2px 8px rgba(255, 255, 255, 0.8);
+    border-radius: 1.25rem;
+  }
+
+  /* Custom button active state */
+  .btn-active {
+    transition: transform 160ms var(--ease-out);
+  }
+  .btn-active:active {
+    transform: scale(0.97);
+  }
+
+  /* Continuous auto-scrolling product marquee */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 32s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+}
