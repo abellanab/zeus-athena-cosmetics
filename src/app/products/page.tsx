@@ -3,7 +3,9 @@
 import { useState } from "react";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import EyebrowPill from "@/components/EyebrowPill";
-import { ShoppingBag, Search } from "lucide-react";
+import AddToCartButton from "@/components/cart/AddToCartButton";
+import { Search } from "lucide-react";
+import type { Product } from "@/store/useCartStore";
 
 /*
  * PRODUCTS PAGE — Zeus and Athena House of Cosmetics Corp.
@@ -20,7 +22,12 @@ const allCategories = [
   { id: "bundle", label: "Bundles" },
 ];
 
-const allProducts = [
+interface CatalogProduct extends Product {
+  category: string;
+  tag: string | null;
+}
+
+const allProducts: CatalogProduct[] = [
   { id: 1, name: "GLUTA ARBUTIN SOAP", category: "brightening", price: "₱65.00", tag: null, image: "/Product photos/Arbutinsoap.jpeg" },
   { id: 2, name: "CHARCOAL SOAP", category: "cleansing", price: "₱65.00", tag: null, image: "/Product photos/charcoalsoap.jpeg" },
   { id: 3, name: "SOAP BUNDLE", category: "bundle", price: "₱398.00", tag: "Save", image: "/Product photos/bundlesoap.jpeg" },
@@ -110,9 +117,7 @@ export default function Products() {
                       {product.tag}
                     </span>
                   )}
-                  <button className="absolute bottom-2.5 right-2.5 w-9 h-9 bg-[#4A2D6B] rounded-lg flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 btn-active">
-                    <ShoppingBag className="w-4 h-4 text-white" />
-                  </button>
+                  <AddToCartButton product={product} className="bottom-2.5 right-2.5" />
                 </div>
 
                 {/* Product Info */}
