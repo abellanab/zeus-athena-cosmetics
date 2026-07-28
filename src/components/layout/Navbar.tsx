@@ -5,7 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ShoppingBag, User, Search } from "lucide-react";
-import { useCartStore } from "@/store/useCartStore";
+import { useCartStore, useCartItemCount } from "@/store/useCartStore";
+import CartPanel from "@/components/cart/CartPanel";
 
 /*
  * NAVBAR — Zeus and Athena House of Cosmetics Corp.
@@ -28,7 +29,13 @@ const navLinks = [
 export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
-  const cartItemCount = useCartStore((s) => s.itemCount);
+  const cartItemCount = useCartItemCount();
+  const openCart = useCartStore((s) => s.openCart);
+
+  // Rehydrate persisted cart state after mount (skipHydration avoids SSR/client mismatch)
+  useEffect(() => {
+    useCartStore.persist.rehydrate();
+  }, []);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -79,11 +86,20 @@ export default function Navbar() {
             <button className="p-2 text-white/80 hover:text-white transition-colors btn-active" aria-label="Account">
               <User className="w-5 h-5" />
             </button>
-            <button className="p-2 text-white/80 hover:text-white transition-colors btn-active relative" aria-label="Cart">
+            <button onClick={openCart} className="p-2 text-white/80 hover:text-white transition-colors btn-active relative" aria-label="Cart">
               <ShoppingBag className="w-5 h-5" />
-              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-[#9B85C4] rounded-full text-[9px] font-bold text-white flex items-center justify-center">
-                {cartItemCount}
-              </span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={cartItemCount}
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.5, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                  className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-[#9B85C4] rounded-full text-[9px] font-bold text-white flex items-center justify-center"
+                >
+                  {cartItemCount}
+                </motion.span>
+              </AnimatePresence>
             </button>
           </div>
 
@@ -188,17 +204,35 @@ export default function Navbar() {
                 <button className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors btn-active" aria-label="Account">
                   <User className="w-5 h-5 text-white" />
                 </button>
-                <button className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors btn-active relative" aria-label="Cart">
+                <button
+                  onClick={() => {
+                    setIsMobileOpen(false);
+                    openCart();
+                  }}
+                  className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors btn-active relative"
+                  aria-label="Cart"
+                >
                   <ShoppingBag className="w-5 h-5 text-white" />
-                  <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-[#9B85C4] rounded-full text-[9px] font-bold text-white flex items-center justify-center">
-                    {cartItemCount}
-                  </span>
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={cartItemCount}
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.5, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                      className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-[#9B85C4] rounded-full text-[9px] font-bold text-white flex items-center justify-center"
+                    >
+                      {cartItemCount}
+                    </motion.span>
+                  </AnimatePresence>
                 </button>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <CartPanel />
     </>
   );
 }

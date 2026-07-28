@@ -2,9 +2,10 @@
 
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import EyebrowPill from "@/components/EyebrowPill";
-import { ShoppingBag } from "lucide-react";
+import AddToCartButton from "@/components/cart/AddToCartButton";
 import Image from "next/image";
 import Link from "next/link";
+import type { Product } from "@/store/useCartStore";
 
 /*
  * PRODUCTS SECTION — "Skincare That Brings Out Your Natural Radiance"
@@ -15,7 +16,7 @@ import Link from "next/link";
  * - Product name (uppercase), price "FROM $X.XX", small cart button
  */
 
-const products = [
+const products: Product[] = [
   {
     id: 1,
     name: "GLUTA ARBUTIN SOAP",
@@ -75,9 +76,7 @@ export default function ProductsSection() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                       {/* Small Cart Button */}
-                      <button className="absolute bottom-3 right-3 w-9 h-9 bg-[#4A2D6B] rounded-lg flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 btn-active">
-                        <ShoppingBag className="w-4 h-4 text-white" />
-                      </button>
+                      <AddToCartButton product={product} className="bottom-3 right-3" />
                     </div>
 
                     {/* Product Info */}
