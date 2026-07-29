@@ -87,3 +87,9 @@ export function useCartItemCount() {
     state.items.reduce((sum, item) => sum + item.quantity, 0)
   );
 }
+
+export function useCartSubtotal() {
+  return useCartStore((state) =>
+    state.items.reduce((sum, item) => sum + parsePrice(item.price) * item.quantity, 0)
+  );
+}
