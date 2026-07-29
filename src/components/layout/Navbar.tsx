@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ShoppingBag, User, Search } from "lucide-react";
 import { useCartStore, useCartItemCount } from "@/store/useCartStore";
+import { useOrderStore } from "@/store/useOrderStore";
+import { useProductStore } from "@/store/useProductStore";
 import CartPanel from "@/components/cart/CartPanel";
 
 /*
@@ -17,10 +19,8 @@ import CartPanel from "@/components/cart/CartPanel";
  */
 
 const navLinks = [
-  { label: "All products", href: "/products" },
-  { label: "Serum", href: "/products?cat=serum" },
-  { label: "Sunscreen", href: "/products?cat=sunscreen" },
-  { label: "Bundle", href: "/products?cat=bundle" },
+  { label: "Home", href: "/" },
+  { label: "All Products", href: "/products" },
   { label: "About Us", href: "/about" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
@@ -35,6 +35,8 @@ export default function Navbar() {
   // Rehydrate persisted cart state after mount (skipHydration avoids SSR/client mismatch)
   useEffect(() => {
     useCartStore.persist.rehydrate();
+    useOrderStore.persist.rehydrate();
+    useProductStore.persist.rehydrate();
   }, []);
 
   // Close mobile menu on route change
@@ -67,7 +69,7 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-6">
-            {navLinks.slice(0, 4).map((link) => (
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -83,9 +85,9 @@ export default function Navbar() {
             <button className="p-2 text-white/80 hover:text-white transition-colors btn-active" aria-label="Search">
               <Search className="w-5 h-5" />
             </button>
-            <button className="p-2 text-white/80 hover:text-white transition-colors btn-active" aria-label="Account">
+            <Link href="/admin" className="p-2 text-white/80 hover:text-white transition-colors btn-active" aria-label="Account">
               <User className="w-5 h-5" />
-            </button>
+            </Link>
             <button onClick={openCart} className="p-2 text-white/80 hover:text-white transition-colors btn-active relative" aria-label="Cart">
               <ShoppingBag className="w-5 h-5" />
               <AnimatePresence mode="wait">
@@ -159,51 +161,15 @@ export default function Navbar() {
                     </Link>
                   </motion.div>
                 ))}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + 4 * 0.05 }}
-                >
-                  <Link href="/" className="block py-3 px-4 text-base font-medium text-white/70 hover:text-white transition-colors rounded-lg">
-                    Home
-                  </Link>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + 5 * 0.05 }}
-                >
-                  <Link href="/about" className="block py-3 px-4 text-base font-medium text-white/70 hover:text-white transition-colors rounded-lg">
-                    About Us
-                  </Link>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + 6 * 0.05 }}
-                >
-                  <Link href="/faq" className="block py-3 px-4 text-base font-medium text-white/70 hover:text-white transition-colors rounded-lg">
-                    FAQ
-                  </Link>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + 7 * 0.05 }}
-                >
-                  <Link href="/contact" className="block py-3 px-4 text-base font-medium text-white/70 hover:text-white transition-colors rounded-lg">
-                    Contact
-                  </Link>
-                </motion.div>
               </div>
 
               <div className="mt-auto flex items-center gap-4 px-4">
                 <button className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors btn-active" aria-label="Search">
                   <Search className="w-5 h-5 text-white" />
                 </button>
-                <button className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors btn-active" aria-label="Account">
+                <Link href="/admin" className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors btn-active" aria-label="Account">
                   <User className="w-5 h-5 text-white" />
-                </button>
+                </Link>
                 <button
                   onClick={() => {
                     setIsMobileOpen(false);

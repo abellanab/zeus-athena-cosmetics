@@ -1,4 +1,3 @@
-import Link from "next/link";
 import EyebrowPill from "@/components/EyebrowPill";
 
 /*
@@ -60,15 +59,9 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div className="flex items-center gap-6">
-            <Link href="/about" className="text-xs text-white/40 hover:text-white/70 transition-colors">
-              Terms
-            </Link>
-            <Link href="/about" className="text-xs text-white/40 hover:text-white/70 transition-colors">
-              Privacy
-            </Link>
-            <Link href="/about" className="text-xs text-white/40 hover:text-white/70 transition-colors">
-              Cookies
-            </Link>
+            <span className="text-xs text-white/40">Terms</span>
+            <span className="text-xs text-white/40">Privacy</span>
+            <span className="text-xs text-white/40">Cookies</span>
           </div>
         </div>
       </div>
