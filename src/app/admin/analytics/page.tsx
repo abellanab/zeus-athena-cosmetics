@@ -83,7 +83,7 @@ export default function AdminAnalyticsPage() {
           value={String(selectedYear)}
           onValueChange={(value) => setSelectedYear(Number(value))}
         >
-          <SelectTrigger className="w-32 border-[#B8A8D4]/40 text-[#4A2D6B]">
+          <SelectTrigger className="w-32 border-[#B8A8D4]/40 text-[#4A2D6B]" aria-label="Filter insights by year">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

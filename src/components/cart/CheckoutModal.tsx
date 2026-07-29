@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { nanoid } from "nanoid";
 import { toast } from "sonner";
 import {
@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useCartStore, parsePrice } from "@/store/useCartStore";
+import { useCartStore, useCartSubtotal } from "@/store/useCartStore";
 import { useOrderStore, type Order } from "@/store/useOrderStore";
 
 interface CheckoutModalProps {
@@ -26,15 +26,11 @@ export default function CheckoutModal({ open, onOpenChange }: CheckoutModalProps
   const clearCart = useCartStore((s) => s.clearCart);
   const closeCart = useCartStore((s) => s.closeCart);
   const addOrder = useOrderStore((s) => s.addOrder);
+  const subtotal = useCartSubtotal();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-
-  const subtotal = useMemo(
-    () => items.reduce((sum, i) => sum + parsePrice(i.price) * i.quantity, 0),
-    [items]
-  );
 
   function resetForm() {
     setName("");
