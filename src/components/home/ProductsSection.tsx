@@ -5,7 +5,7 @@ import EyebrowPill from "@/components/EyebrowPill";
 import AddToCartButton from "@/components/cart/AddToCartButton";
 import Image from "next/image";
 import Link from "next/link";
-import type { Product } from "@/store/useCartStore";
+import { useProductStore } from "@/store/useProductStore";
 
 /*
  * PRODUCTS SECTION — "Skincare That Brings Out Your Natural Radiance"
@@ -16,28 +16,8 @@ import type { Product } from "@/store/useCartStore";
  * - Product name (uppercase), price "FROM $X.XX", small cart button
  */
 
-const products: Product[] = [
-  {
-    id: 1,
-    name: "GLUTA ARBUTIN SOAP",
-    price: "₱65.00",
-    image: "/Product photos/Arbutinsoap.jpeg",
-  },
-  {
-    id: 2,
-    name: "CHARCOAL SOAP",
-    price: "₱65.00",
-    image: "/Product photos/charcoalsoap.jpeg",
-  },
-  {
-    id: 3,
-    name: "SOAP BUNDLE",
-    price: "₱398.00",
-    image: "/Product photos/bundlesoap.jpeg",
-  },
-];
-
 export default function ProductsSection() {
+  const products = useProductStore((s) => s.products);
   const marqueeProducts = [...products, ...products];
 
   return (

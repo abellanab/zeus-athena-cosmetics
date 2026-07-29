@@ -6,7 +6,7 @@ import AnimateOnScroll from "@/components/AnimateOnScroll";
 import EyebrowPill from "@/components/EyebrowPill";
 import AddToCartButton from "@/components/cart/AddToCartButton";
 import { Search, ChevronDown } from "lucide-react";
-import type { Product } from "@/store/useCartStore";
+import { useProductStore } from "@/store/useProductStore";
 
 /*
  * PRODUCTS PAGE — Zeus and Athena House of Cosmetics Corp.
@@ -23,46 +23,8 @@ const allCategories = [
   { id: "bundle", label: "Bundles" },
 ];
 
-interface CatalogProduct extends Product {
-  category: string;
-  tag: string | null;
-  description: string;
-}
-
-const allProducts: CatalogProduct[] = [
-  {
-    id: 1,
-    name: "GLUTA ARBUTIN SOAP",
-    category: "brightening",
-    price: "₱65.00",
-    tag: null,
-    image: "/Product photos/Arbutinsoap.jpeg",
-    description:
-      "Reveal brighter, smoother, and more radiant skin with Athena Gluta-Arbutin Whitening Soap. This advanced whitening soap is formulated with a powerful blend of alpha arbutin, glutathione, and niacinamide to help reduce dark spots, acne marks, and uneven skin tone while gently cleansing the skin.",
-  },
-  {
-    id: 2,
-    name: "CHARCOAL SOAP",
-    category: "cleansing",
-    price: "₱65.00",
-    tag: null,
-    image: "/Product photos/charcoalsoap.jpeg",
-    description:
-      "Experience deep, effective cleansing with Zeus Charcoal Soap with Niacinamide and Salicylic Acid. This 100g soap bar is specially formulated to remove dirt, excess oil, and impurities while helping prevent acne and breakouts. Powered by activated charcoal and acne-fighting ingredients, it is ideal for daily face and body cleansing, especially for oily and acne-prone skin.",
-  },
-  {
-    id: 3,
-    name: "SOAP BUNDLE",
-    category: "bundle",
-    price: "₱398.00",
-    tag: "Save",
-    image: "/Product photos/bundlesoap.jpeg",
-    description:
-      "Achieve cleaner, brighter, and smoother skin with this value bundle promo! Get 2 Arbutin Whitening Soaps + 1 FREE Charcoal Soap—perfect for daily skincare routine for both face and body.",
-  },
-];
-
 export default function Products() {
+  const allProducts = useProductStore((s) => s.products);
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [hoveredId, setHoveredId] = useState<number | null>(null);
