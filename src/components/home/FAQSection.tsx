@@ -80,13 +80,15 @@ export default function FAQSection() {
           {/* Left Column — Image + Help Badge */}
           <div className="relative hidden lg:block">
             <AnimateOnScroll direction="left">
-              <img
-                src="/Product photos/FAQ.jpg"
-                alt="Premium skincare product"
+              <video
+                src="/Product photos/soapanimation.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full rounded-2xl object-cover shadow-lg"
                 style={{ aspectRatio: "4/5", maxHeight: "500px" }}
               />
-      
             </AnimateOnScroll>
           </div>
 

@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import EyebrowPill from "@/components/EyebrowPill";
 import AddToCartButton from "@/components/cart/AddToCartButton";
-import { Search } from "lucide-react";
+import { Search, ChevronDown } from "lucide-react";
 import type { Product } from "@/store/useCartStore";
 
 /*
@@ -25,17 +26,46 @@ const allCategories = [
 interface CatalogProduct extends Product {
   category: string;
   tag: string | null;
+  description: string;
 }
 
 const allProducts: CatalogProduct[] = [
-  { id: 1, name: "GLUTA ARBUTIN SOAP", category: "brightening", price: "₱65.00", tag: null, image: "/Product photos/Arbutinsoap.jpeg" },
-  { id: 2, name: "CHARCOAL SOAP", category: "cleansing", price: "₱65.00", tag: null, image: "/Product photos/charcoalsoap.jpeg" },
-  { id: 3, name: "SOAP BUNDLE", category: "bundle", price: "₱398.00", tag: "Save", image: "/Product photos/bundlesoap.jpeg" },
+  {
+    id: 1,
+    name: "GLUTA ARBUTIN SOAP",
+    category: "brightening",
+    price: "₱65.00",
+    tag: null,
+    image: "/Product photos/Arbutinsoap.jpeg",
+    description:
+      "Reveal brighter, smoother, and more radiant skin with Athena Gluta-Arbutin Whitening Soap. This advanced whitening soap is formulated with a powerful blend of alpha arbutin, glutathione, and niacinamide to help reduce dark spots, acne marks, and uneven skin tone while gently cleansing the skin.",
+  },
+  {
+    id: 2,
+    name: "CHARCOAL SOAP",
+    category: "cleansing",
+    price: "₱65.00",
+    tag: null,
+    image: "/Product photos/charcoalsoap.jpeg",
+    description:
+      "Experience deep, effective cleansing with Zeus Charcoal Soap with Niacinamide and Salicylic Acid. This 100g soap bar is specially formulated to remove dirt, excess oil, and impurities while helping prevent acne and breakouts. Powered by activated charcoal and acne-fighting ingredients, it is ideal for daily face and body cleansing, especially for oily and acne-prone skin.",
+  },
+  {
+    id: 3,
+    name: "SOAP BUNDLE",
+    category: "bundle",
+    price: "₱398.00",
+    tag: "Save",
+    image: "/Product photos/bundlesoap.jpeg",
+    description:
+      "Achieve cleaner, brighter, and smoother skin with this value bundle promo! Get 2 Arbutin Whitening Soaps + 1 FREE Charcoal Soap—perfect for daily skincare routine for both face and body.",
+  },
 ];
 
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const filtered = allProducts.filter((product) => {
     const matchCategory = activeCategory === "all" || product.category === activeCategory;
@@ -102,7 +132,13 @@ export default function Products() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {filtered.map((product, i) => (
             <AnimateOnScroll key={product.id} delay={(i % 4) * 0.06}>
-              <div className="shelf-card p-4 group cursor-pointer">
+              <div
+                className="shelf-card p-4 group cursor-pointer"
+                onMouseEnter={() => setHoveredId(product.id)}
+                onMouseLeave={() =>
+                  setHoveredId((prev) => (prev === product.id ? null : prev))
+                }
+              >
                 {/* Product Image in Niche */}
                 <div className="relative aspect-square rounded-xl overflow-hidden mb-4 bg-[#EFE9F5] shadow-inner">
                   <img
@@ -121,12 +157,36 @@ export default function Products() {
                 </div>
 
                 {/* Product Info */}
-                <h3 className="font-display text-xs font-bold tracking-wider text-[#4A2D6B] uppercase mb-0.5">
-                  {product.name}
-                </h3>
+                <div className="flex items-start justify-between gap-2 mb-0.5">
+                  <h3 className="font-display text-xs font-bold tracking-wider text-[#4A2D6B] uppercase">
+                    {product.name}
+                  </h3>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 text-[#9B85C4] flex-shrink-0 mt-0.5 transition-transform duration-300 ${
+                      hoveredId === product.id ? "rotate-180" : ""
+                    }`}
+                  />
+                </div>
                 <p className="text-[10px] text-[#9B85C4]">
                   FROM {product.price}
                 </p>
+
+                {/* Description — revealed on hover, container expands */}
+                <AnimatePresence initial={false}>
+                  {hoveredId === product.id && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <p className="text-[11px] text-[#4A2D6B]/70 leading-relaxed pt-2 mt-2 border-t border-[#B8A8D4]/30">
+                        {product.description}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </AnimateOnScroll>
           ))}
