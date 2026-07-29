@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { Star, CheckCircle2 } from "lucide-react";
 
@@ -80,10 +81,13 @@ export default function HeroSection() {
             className="relative aspect-[4/5] lg:aspect-auto lg:h-full"
           >
             <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-lg">
-              <img
+              <Image
                 src="/Product photos/kyra.jpg"
                 alt="Zeus & Athena ambassador with Arbutin Soap"
-                className="absolute inset-0 w-full h-full object-cover object-[45%_22%]"
+                fill
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover object-[45%_22%]"
               />
             </div>
 
@@ -114,10 +118,12 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.4, ease: [0.23, 1, 0.32, 1] }}
               className="group relative flex-1 aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden shadow-lg"
             >
-              <img
+              <Image
                 src="/Product photos/arbutinsoap.jpg"
                 alt="Arbutin Soap — dewy & polished skin"
-                className="absolute inset-0 w-full h-full object-cover object-[50%_55%] group-hover:scale-105 transition-transform duration-700"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover object-[50%_55%] group-hover:scale-105 transition-transform duration-700"
               />
             </motion.div>
 
@@ -127,10 +133,12 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.5, ease: [0.23, 1, 0.32, 1] }}
               className="group relative flex-1 aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden shadow-lg"
             >
-              <img
+              <Image
                 src="/Product photos/charcoal.jpg"
                 alt="Charcoal Soap — matte & refined skin"
-                className="absolute inset-0 w-full h-full object-cover object-[50%_55%] group-hover:scale-105 transition-transform duration-700"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover object-[50%_55%] group-hover:scale-105 transition-transform duration-700"
               />
             </motion.div>
           </div>
