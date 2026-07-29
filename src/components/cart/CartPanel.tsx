@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import { ShoppingBag, X, Minus, Plus } from "lucide-react";
 import {
@@ -14,8 +14,10 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { useCartStore, parsePrice } from "@/store/useCartStore";
+import CheckoutModal from "@/components/cart/CheckoutModal";
 
 export default function CartPanel() {
+  const [isCheckoutOpen, setCheckoutOpen] = useState(false);
   const items = useCartStore((s) => s.items);
   const isOpen = useCartStore((s) => s.isOpen);
   const openCart = useCartStore((s) => s.openCart);
@@ -105,20 +107,21 @@ export default function CartPanel() {
               </span>
             </div>
             <button
-              disabled
-              className="w-full py-3 rounded-full bg-[#4A2D6B]/40 text-white text-sm font-medium cursor-not-allowed"
+              onClick={() => setCheckoutOpen(true)}
+              className="btn-active w-full px-7 py-3 bg-[#4A2D6B] text-white font-medium text-sm rounded-full hover:bg-[#5B3A7A] transition-all duration-300"
             >
-              Checkout — Coming Soon
+              Checkout
             </button>
             <button
               onClick={closeCart}
-              className="btn-active w-full px-7 py-3 bg-[#4A2D6B] text-white font-medium text-sm rounded-full hover:bg-[#5B3A7A] transition-all duration-300"
+              className="btn-active w-full py-3 rounded-full border border-[#B8A8D4]/40 text-[#4A2D6B] text-sm font-medium hover:bg-[#EFE9F5] transition-all duration-300"
             >
               Continue Shopping
             </button>
           </SheetFooter>
         )}
       </SheetContent>
+      <CheckoutModal open={isCheckoutOpen} onOpenChange={setCheckoutOpen} />
     </Sheet>
   );
 }
